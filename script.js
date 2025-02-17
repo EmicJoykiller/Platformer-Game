@@ -30,7 +30,7 @@ class Player {
     ctx.fillStyle = "#99c9ff";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
-
+  
   update() {
     this.draw();
     this.position.x += this.velocity.x;
@@ -109,18 +109,42 @@ const animate = () => {
   } else {
     player.velocity.x = 0;
 
-
     if (keys.rightKey.pressed && isCheckpointCollisionDetectionActive) {
       platforms.forEach((platform) => {
         platform.position.x -= 5;
       });
-    }else if(keys.leftKey.pressed && isCheckpointCollisionDetectionActive){
-      platforms.forEach((platform)=>{
+    } else if (keys.leftKey.pressed && isCheckpointCollisionDetectionActive) {
+      platforms.forEach((platform) => {
         platform.position.x += 5;
-      })
+      });
+    }
+  }
+
+  platforms.forEach((platform) => {
+    const collisionDetectionRules = [
+      player.position.y + player.height <= platform.position.y,
+      player.position.y + player.height + player.velocity.y >= platform.position.y,
+      player.position.x >= platform.position.x - player.width / 2,
+      player.position.x <=
+        platform.position.x + platform.width - player.width / 3,
+    ];
+
+    if (collisionDetectionRules.every((rule) => rule)) {
+      player.velocity.y = 0;
+      return;
     }
 
-  }
+    const platformDetectionRules = [
+      player.position.x >= platform.position.x - player.width / 2,
+      player.position.x <=
+        platform.position.x + platform.width - player.width / 3,
+      player.position.y + player.height >= platform.position.y,
+      player.position.y <= platform.position.y + platform.height,
+    ];
+
+
+  });
+
 }
 
 
