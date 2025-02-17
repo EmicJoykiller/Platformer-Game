@@ -13,14 +13,23 @@ const proportionalSize = (size) => {
   return innerHeight < 500 ? Math.ceil((size / 500) * innerHeight) : size;
 }
 
-
 class Player {
   constructor() {
     this.position = {
       x: proportionalSize(10),
       y: proportionalSize(400),
     };
-
+    this.velocity = {
+      x: 0,
+      y: 0,
+    };
+    this.width = proportionalSize(40);
+    this.height = proportionalSize(40);
   }
-}
+  draw(){
+    ctx.fillStyle = "#99c9ff";
+  }
 
+
+
+}
