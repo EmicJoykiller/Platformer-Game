@@ -1,91 +1,112 @@
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  :root {
-    --main-bg-color: #0a0a23;
-    --section-bg-color: #ffffff;
-    --golden-yellow: #feac32;
-  }
-  
-  body {
-    background-color: var(--main-bg-color);
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Colors and Theme */
+:root {
+  --main-bg-color: #1a1a2e;
+  --section-bg-color: #0f3460;
+  --accent-color: #e94560;
+  --button-bg: #53354a;
+  --button-hover: #903749;
+  --text-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Body */
+body {
+  background-color: var(--main-bg-color);
+  font-family: 'Arial', sans-serif;
+  color: var(--text-color);
+}
+
+/* Start Screen */
+.start-screen {
+  background-color: var(--section-bg-color);
+  width: 90%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 15px 25px var(--shadow-color);
+  text-align: center;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.instructions {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 10px 0;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  color: var(--text-color);
+  font-size: 1rem;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--button-hover);
+}
+
+.btn-container {
+  margin-top: 20px;
+}
+
+/* Checkpoint Screen */
+.checkpoint-screen {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  background-color: var(--section-bg-color);
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 15px 25px var(--shadow-color);
+  text-align: center;
+  display: none;
+}
+
+.checkpoint-screen h2 {
+  color: var(--accent-color);
+}
+
+.checkpoint-screen p {
+  color: var(--text-color);
+}
+
+/* Canvas */
+#canvas {
+  display: none;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
   .start-screen {
-    background-color: var(--section-bg-color);
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    border-radius: 30px;
-    padding: 20px;
-    padding-bottom: 5px;
+    width: 60%;
   }
-  
-  .main-title {
-    text-align: center;
-  }
-  
-  .instructions {
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 15px;
-    line-height: 2rem;
-  }
-  
-  .btn {
-    cursor: pointer;
-    width: 100px;
-    margin: 10px;
-    color: #0a0a23;
-    font-size: 18px;
-    background-color: var(--golden-yellow);
-    background-image: linear-gradient(#fecc4c, #ffac33);
-    border-color: var(--golden-yellow);
-    border-width: 3px;
-  }
-  
-  .btn:hover {
-    background-image: linear-gradient(#ffcc4c, #f89808);
-  }
-  
-  .btn-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+
   .checkpoint-screen {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    text-align: center;
-    background-color: var(--section-bg-color);
-    border-radius: 20px;
-    padding: 10px;
-    display: none;
+    width: 50%;
   }
-  
-  #canvas {
-    display: none;
-  }
-  
-  @media (min-width: 768px) {
-    .start-screen {
-      width: 60%;
-      max-width: 700px;
-    }
-  
-    .checkpoint-screen {
-      max-width: 300px;
-    }
-  }
-  
+}
